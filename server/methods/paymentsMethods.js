@@ -10,10 +10,11 @@ Meteor.methods({
             throw error;
         }
         else{
-            var user = Meteor.users.findOne({_id:this.userId});
             //VALIDATE DATA
             check(duration,Number);
             check(parkingId, String);
+            var user = Meteor.users.findOne({_id:this.userId});
+
             //CALL EXTERNAL PAYMENT API
             //VERIFY RESULT
             //RETURN RESULT OR ERROR

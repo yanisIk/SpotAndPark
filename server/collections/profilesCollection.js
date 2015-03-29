@@ -19,7 +19,7 @@ ProfileSchema = new SimpleSchema({
     },
     email: {
         type: String,
-        regex: SimpleSchema.RegEx.Email,
+        regEx: SimpleSchema.RegEx.Email,
         min: 3,
         max:40
     },
@@ -36,6 +36,7 @@ Profiles.attachSchema(ProfileSchema);
 ///HELPERS
 
 Profiles.helpers({
+
 
 
 });

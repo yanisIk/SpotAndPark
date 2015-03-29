@@ -1,6 +1,6 @@
 Meteor.methods({
     'ParkingPlaces.insert': function (place) {
-        Places.insert(place);
+        ParkingPlaces.insert(place);
     },
 
     'ParkingPlaces.update': function(placeId, modifiers) {

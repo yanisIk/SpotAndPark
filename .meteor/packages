@@ -17,3 +17,7 @@ dburles:factory
 anti:fake
 aldeed:simple-schema
 http
+cunneen:mailgun
+meteoric:ionic
+meteoric:autoform-ionic
+meteoric:ionicons-sass
