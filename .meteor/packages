@@ -1,0 +1,19 @@
+# Meteor packages used by this project, one per line.
+# Check this file (and the other files in this directory) into your repository.
+#
+# 'meteor add' and 'meteor remove' will edit this file for you,
+# but you can also edit it by hand.
+
+meteor-platform
+accounts-password
+dburles:collection-helpers
+matb33:collection-hooks
+alanning:roles
+momentjs:moment
+underscore
+aldeed:collection2
+reywood:publish-composite
+dburles:factory
+anti:fake
+aldeed:simple-schema
+http
