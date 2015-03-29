@@ -1,1 +1,0 @@
-// Place here the Meteor Methods. This methods are also available for the clients using Meteor.call().

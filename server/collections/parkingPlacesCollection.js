@@ -1,6 +1,10 @@
 ParkingPlaces = new Mongo.Collection('parkingPlaces');
 
 //SCHEMAS
+LocationSchema = new SimpleSchema({
+
+});
+
 ParkingPlaceSchema = new SimpleSchema({
     parkingId: {
         type: String,
@@ -8,11 +12,19 @@ ParkingPlaceSchema = new SimpleSchema({
         max: 60,
         min: 3
     },
-    coordinates: {
+    coordinates: { //[long,lat]
         type: [Number],
+        decimal: true,
+        minCount: 2,
+        maxCount: 2,
         index: '2d',
         label: "coordinates"
+    },
+    isAvailable: {
+        type: Boolean,
+        index: 1
     }
+
 });
 
 

@@ -3,7 +3,7 @@
  */
 
 Meteor.methods({
-    'pay': function (parkingId, duration) {
+    'Payments.pay': function (parkingId, duration) {
         if(!this.userId){
             var error = new Meteor.Error("403", "You need to login first");
             console.log(error);
@@ -17,13 +17,27 @@ Meteor.methods({
 
             //CALL EXTERNAL PAYMENT API
             //VERIFY RESULT
+
+            Meteor.call('ParkingPlaces.makeNotAvailable', parkingId);
+            var delayInMs = duration*60*1000;
+
+
             //RETURN RESULT OR ERROR
         }
 
     },
 
-    'checkPayment': function(parkingId) {
+    'Payments.checkPayment': function(parkingId) {
         //VERIFY THE STATUS
+    },
+
+    'Payments.clearPayment': function(paymentId){
+        if ( this.connection == null ) {
+            Payments.update({_id: paymentId},{$set:{isCleared: true}});
+        }
+        else {
+            throw new Meteor.Error('server-only-method', 'Sorry, this method can only be called from the server.');
+        }
     }
 
 });

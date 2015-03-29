@@ -1,1 +1,0 @@
-// Add here events and helpers for appLayout

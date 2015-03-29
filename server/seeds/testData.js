@@ -3,19 +3,19 @@ Meteor.startup(function() {
     if (ParkingPlaces.find({}).count() === 0) {
 
         var parkingPlaces = [
-            {parkingId:"CDN_TEST1", coordinates:[45.504951, -73.627163]},
-            {parkingId:"CDN_TEST2", coordinates:[45.503673, -73.628354]},
-            {parkingId:"CDN_TEST3", coordinates:[45.504507, -73.630317]},
-            {parkingId:"CDN_TEST4", coordinates:[45.507670, -73.622861]},
-            {parkingId:"CDN_TEST5", coordinates:[45.504951, -73.627163]},
-            {parkingId:"CDN_TEST6", coordinates:[45.503673, -73.628354]},
-            {parkingId:"CDN_TEST7", coordinates:[45.504507, -73.630317]},
-            {parkingId:"CDN_TEST8", coordinates:[45.507670, -73.622861]}
+            {parkingId:"CDN_TEST1", coordinates:[45.504951, -73.627163], isAvailable: true},
+            {parkingId:"CDN_TEST2", coordinates:[45.503673, -73.628354], isAvailable: true},
+            {parkingId:"CDN_TEST3", coordinates:[45.504507, -73.630317], isAvailable: true},
+            {parkingId:"CDN_TEST4", coordinates:[45.507670, -73.622861], isAvailable: true},
+            {parkingId:"CDN_TEST5", coordinates:[45.504951, -73.627163], isAvailable: true},
+            {parkingId:"CDN_TEST6", coordinates:[45.503673, -73.628354], isAvailable: true},
+            {parkingId:"CDN_TEST7", coordinates:[45.504507, -73.630317], isAvailable: true},
+            {parkingId:"CDN_TEST8", coordinates:[45.507670, -73.622861], isAvailable: true}
         ];
 
         //
-        _each(parkingPlaces, function(parkingPlace){
-            Meteor.call('ParkingPlaces.insert', parkingPlace);
+        _.each(parkingPlaces, function(parkingPlace){
+            ParkingPlaces.insert(parkingPlace);
         });
 
 

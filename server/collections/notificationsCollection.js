@@ -10,8 +10,15 @@ NotificationSchema = new SimpleSchema({
     userId: {
         type: String
     },
-    payment: {
-        type: Object
+    paymentId: {
+        type: String
+    },
+    parkingId:{
+        type: String
+    },
+    isRead: {
+        type: Boolean,
+        optional: true
     }
 });
 
@@ -21,12 +28,35 @@ Notifications.attachSchema(NotificationSchema);
 
 Notifications.helpers({
     'getMyNotifications': function(userId) {
-        return Notifications.find({
-                "userId": userId
-            },
-            {
-                fields: {_id: 0}
-            });
+        if(Meteor.isServer){
+            return Notifications.find({
+                    "userId": userId
+                },
+                {
+                    fields: {_id: 0}
+                });
+        }
+
+    },
+    'checkIfNotificationExists' : function(notification){
+        //Validate data
+        check(notification,{
+           userId: String,
+            parkingId: String,
+            paymentId: String
+        });
+        if(Notifications.find({
+                $and:[
+                    {userId: notification.userId},
+                    {parkingId: notification.parkingId},
+                    {paymentId: notification.paymentId}
+                ]
+            }).count>0){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
     });
@@ -35,4 +65,5 @@ Notifications.helpers({
 
 Notifications.before.insert(function (userId, doc) {
     doc.createdAt = moment().toDate();
+    doc.isRead = false;
 });

@@ -1,6 +1,6 @@
 
 //Publish from HTTP API
-Meteor.publish('parkingPlaces', function(query) {
+Meteor.publish('parkingPlacesFromAPI', function(query) {
     var self = this;
     try {
 
@@ -35,6 +35,9 @@ Meteor.publish('parkingPlaces', function(query) {
 });
 
 
+Meteor.publish("allParkingPlaces", function(){
+   return ParkingPlaces.find();
+});
 
 Meteor.publishComposite("singleParkingPlace", function(placeId) {
     return {

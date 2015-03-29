@@ -27,6 +27,10 @@ ProfileSchema = new SimpleSchema({
         type: String,
         min: 3,
         max:40
+    },
+    bonusPoints: {
+        type: Number,
+        optional: true
     }
 
 });
@@ -45,4 +49,5 @@ Profiles.helpers({
 
 Profiles.before.insert(function (userId, doc) {
     doc.createdAt = moment().toDate();
+    doc.bonusPoints = 0;
 });
