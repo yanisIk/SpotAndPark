@@ -4,9 +4,13 @@
 
 Meteor.methods({
 
-    'subscribeWithPasswordAndProfile': function(username, password, profile){
-        var user = Accounts.createUser(username, email, password);
-        //profile.userId =
+    'subscribeWithEmailPasswordAndProfile': function(email, password, profile){
+        //Validate data
+
+        Accounts.createUser(email, password);
+        profile.email = email;
+
+        Profiles.insert(profile);
 
     }
 

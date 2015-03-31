@@ -3,7 +3,8 @@
 Meteor.publish('parkingPlacesFromAPI', function(query) {
     var self = this;
     try {
-
+    //TORONTO PARKING LIST API
+        // http://www1.toronto.ca/City%20Of%20Toronto/Information%20&%20Technology/Open%20Data/Data%20Sets/Assets/Files/greenPParking2015.json
         var response = HTTP.get('STATIONNEMENT MONTREAL API URL',{
             timeout: 5000,
                 params:{
