@@ -47,6 +47,10 @@ ParkingPlaceSchema = new SimpleSchema({
     panelImageUrl: {
         type: String,
         regEx: SimpleSchema.RegEx.Url
+    },
+    lastUpdatedBy: { //userId
+        type: String,
+        optional: true
     }
 
 });
