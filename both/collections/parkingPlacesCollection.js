@@ -29,6 +29,16 @@ LocationSchema = new SimpleSchema({
     }
 });
 
+//TODO : Change the data type of the schedule
+ScheduleAvailabilitySchema = new SimpleSchema({
+    from : {
+        type : String
+    },
+    to: {
+        type: String
+    }
+});
+
 ParkingPlaceSchema = new SimpleSchema({
     parkingId: {
         type: String,
@@ -43,6 +53,9 @@ ParkingPlaceSchema = new SimpleSchema({
     isAvailable: {
         type: Boolean,
         index: 1
+    },
+    scheduleAvailability: {
+      type: ScheduleAvailabilitySchema
     },
     panelImageUrl: {
         type: String,
