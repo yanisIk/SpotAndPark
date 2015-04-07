@@ -24,7 +24,7 @@ LocationSchema = new SimpleSchema({
             return "Point";
         }
     },
-    coordinate: {
+    coordinates: {
         type: GeocoordsSchema
     }
 });
@@ -39,6 +39,12 @@ ParkingPlaceSchema = new SimpleSchema({
     loc: {
         type: LocationSchema,
         index: '2d'
+    },
+    city: {
+      type: String
+    },
+    country: {
+        type: String
     },
     isAvailable: {
         type: Boolean,
@@ -65,7 +71,7 @@ ParkingPlaces.attachSchema(ParkingPlaceSchema);
 ParkingPlaces.helpers({
     'findNearbyParkingPlaces': function(lat,long,radius) {
         return ParkingPlaces.find({
-                "coordinates": {$near: [lat, long], $maxDistance: radius}
+                "loc": {$near: [lat, long], $maxDistance: radius}
             },
             {
                 fields: {_id: 0}
